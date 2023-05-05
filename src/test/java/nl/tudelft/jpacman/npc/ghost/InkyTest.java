@@ -9,7 +9,6 @@ import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.sprite.PacManSprites;
 import org.junit.jupiter.api.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
 import java.util.List;
