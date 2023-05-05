@@ -9,6 +9,8 @@ import nl.tudelft.jpacman.npc.ghost.GhostFactory;
 
 import java.util.List;
 
+//添加一个地图解析器，方便测试生成clyde魔鬼
+
 /**
  * A test helper utility for writing the ghost unit tests.
  * A useful method for retrieving ghosts from your map would be:
