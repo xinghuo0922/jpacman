@@ -12,12 +12,6 @@ import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.npc.Ghost;
 import nl.tudelft.jpacman.sprite.Sprite;
 
-/*
- 这是为了方便测试生成Clyde魔鬼而添加的一个地图解析器
- */
-
-
-
 /**
  * <p>
  * An implementation of the classic Pac-Man ghost Clyde.
