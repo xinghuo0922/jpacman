@@ -12,6 +12,12 @@ import nl.tudelft.jpacman.level.Player;
 import nl.tudelft.jpacman.npc.Ghost;
 import nl.tudelft.jpacman.sprite.Sprite;
 
+/*
+ 这是为了方便测试生成Clyde魔鬼而添加的一个地图解析器
+ */
+
+
+
 /**
  * <p>
  * An implementation of the classic Pac-Man ghost Clyde.
@@ -44,7 +50,7 @@ public class Clyde extends Ghost {
     /**
      * The amount of cells Clyde wants to stay away from Pac Man.
      */
-    private static final int SHYNESS = 8;
+    private static final int SHYNESS = 8; //距离小于8个单元格时远离，大于8个单元格时靠近
 
     /**
      * The variation in intervals, this makes the ghosts look more dynamic and
@@ -83,7 +89,7 @@ public class Clyde extends Ghost {
      *
      * <p>
      * Clyde has two basic AIs, one for when he's far from Pac-Man, and one for
-     * when he is near to Pac-Man. 
+     * when he is near to Pac-Man.
      * When Clyde is far away from Pac-Man (beyond eight grid spaces),
      * Clyde behaves very much like Blinky, trying to move to Pac-Man's exact
      * location. However, when Clyde gets within eight grid spaces of Pac-Man,
@@ -102,11 +108,11 @@ public class Clyde extends Ghost {
         Square target = nearest.getSquare();
 
         List<Direction> path = Navigation.shortestPath(getSquare(), target, this);
-        
+
         if (path != null && !path.isEmpty()) {
             Direction direction = path.get(0);
             if (path.size() <= SHYNESS) {
-                 return Optional.ofNullable(OPPOSITES.get(direction));
+                return Optional.ofNullable(OPPOSITES.get(direction));
             }
             return Optional.of(direction);
         }
