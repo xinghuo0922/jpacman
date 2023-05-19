@@ -53,7 +53,7 @@ public class PlayerCollisionsTest {
 //    }
 
     @Test
-    @DisplayName("玩家往豆子处移动")
+    @DisplayName("玩家撞向豆子")
     public void test3() {
         Player player = mock(Player.class);
         Pellet pellet = mock(Pellet.class);
@@ -61,6 +61,37 @@ public class PlayerCollisionsTest {
 
         verify(pointCalculator, times(1)).consumedAPellet(player, pellet);
         verify(pellet, times(1)).leaveSquare(); //按规则豆子被吃掉
+    }
+//    // 项目貌似没有设计撞墙
+//    @Test
+//    @DisplayName("玩家撞向墙")
+//    public void test4() {
+//        Player player = mock(Player.class);
+//        Pellet pellet = mock(Pellet.class);
+//        playerCollisions.collide(player, ); //碰撞体为player，被碰撞体是墙
+//
+//        verify(pointCalculator, times(1)).consumedAPellet(player, pellet);
+//    }
+
+    @Test
+    @DisplayName("无事发生的碰撞")
+    public void test4() {
+        Ghost ghost = mock(Ghost.class);
+        Ghost ghost2 = mock(Ghost.class);
+        Player player = mock(Player.class);
+        Player player2 = mock(Player.class);
+        Pellet pellet = mock(Pellet.class);
+        Pellet pellet2 = mock(Pellet.class);
+        playerCollisions.collide(player, player2);
+        playerCollisions.collide(ghost, ghost2);
+        playerCollisions.collide(ghost, pellet);
+        playerCollisions.collide(pellet, pellet2);
+        playerCollisions.collide(pellet, ghost);
+        verify(pointCalculator, times(0)).collidedWithAGhost(player, ghost);
+        verify(player, times(0)).setAlive(false);
+        verify(player, times(0)).setKiller(ghost);
+        verify(pointCalculator, times(0)).consumedAPellet(player, pellet);
+        verify(pellet, times(0)).leaveSquare();
     }
 
 }
